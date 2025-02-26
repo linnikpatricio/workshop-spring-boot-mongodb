@@ -1,5 +1,6 @@
 package com.linnik.workshopmongo.resources;
 
+import com.linnik.workshopmongo.domain.Post;
 import com.linnik.workshopmongo.domain.User;
 import com.linnik.workshopmongo.dto.UserDTO;
 import com.linnik.workshopmongo.services.UserService;
@@ -47,6 +48,10 @@ public class UserResource {
         obj.setId(id);
         service.update(obj);
         return ResponseEntity.noContent().build();
-
+    }
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findByPosts(@PathVariable String id) {
+        User user = service.findById(id);
+        return ResponseEntity.ok().body(user.getPosts());
     }
 }
