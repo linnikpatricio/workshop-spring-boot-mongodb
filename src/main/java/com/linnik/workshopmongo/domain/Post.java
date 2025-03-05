@@ -15,7 +15,7 @@ public class Post implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     private String id;
-    private Date data;
+    private Date date;
     private String title;
     private String body;
     private AuthorDTO author;
@@ -26,7 +26,7 @@ public class Post implements Serializable {
 
     public Post(String id, Date data, String title, String body,AuthorDTO author) {
         this.id = id;
-        this.data = data;
+        this.date = data;
         this.title = title;
         this.body = body;
         this.author = author;
@@ -41,11 +41,11 @@ public class Post implements Serializable {
     }
 
     public Date getData() {
-        return data;
+        return date;
     }
 
     public void setData(Date data) {
-        this.data = data;
+        this.date = data;
     }
 
     public String getTitle() {

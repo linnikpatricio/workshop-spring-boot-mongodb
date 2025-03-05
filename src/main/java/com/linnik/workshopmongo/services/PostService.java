@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,9 +23,12 @@ public class PostService {
         return obj.orElseThrow(()-> new ObjectNotFoundException("Id não encontrado!"));
 
     }
-
     public List<Post> findByTitle(String text) {
         return repository.serachTitle(text);
+    }
+    public List<Post> fullSearch(String text, Date dataMin, Date dataMax) {
+        dataMax = new Date(dataMax.getTime() + 24 * 60 * 60 * 1000);
+        return repository.fullSearch(text, dataMin, dataMax);
     }
 
 }
